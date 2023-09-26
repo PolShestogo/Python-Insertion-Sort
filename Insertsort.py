@@ -1,4 +1,5 @@
 import random
+import timeit
 
 def insertSort(arr):
         for i in range (1,len(arr)):
@@ -8,10 +9,9 @@ def insertSort(arr):
                         arr[j+1]=arr[j]
                         j=j-1
                 arr[j+1]=t
-
 try:
         n= input("Введите количество элементов сортируемого массива: ")
-        if abs(int(n))>=100000:
+        if abs(int(n))>=1000000:
                 print('Слишком большое количество элементов')
                 exit()
 except Exception:
@@ -27,7 +27,10 @@ file.close()
 file=open('input.txt','r')
 arr=list((file.read()).split())
 print('Исходный массив:', str(arr))
+start = timeit.default_timer()
 insertSort(arr)
+end= timeit.default_timer()
 print('Отсортированный массив: ', arr)
 sorted=open('sorted.txt','w+')
 sorted.write(str(arr))
+print("Время сортировки: ", end-start)
