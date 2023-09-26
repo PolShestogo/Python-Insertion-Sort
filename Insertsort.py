@@ -10,20 +10,23 @@ def insertSort(arr):
                         j=j-1
                 arr[j+1]=t
 
-def main():                
+def main():  
+        max=1000
+        min=1000
+        nmax=100000              
         try:
                 n= input("Введите количество элементов сортируемого массива: ")
-                if abs(int(n))>=1000000:
+                if abs(int(n))>=nmax:
                         print('Слишком большое количество элементов')
                         exit()
         except Exception:
                 print("Некорректный ввод")
                 exit() 
         file=open('input.txt','w+')
-        file.write(str(random.randint(-10,10)))
+        file.write(str(random.randint(min,max)))
         for i in range (1, int(n)-1):
                 file.write(' ')
-                file.write(str(random.randint(-10,10)))       
+                file.write(str(random.randint(min,max)))       
         file.close()
         file=open('input.txt','r')
         arr=list((file.read()).split())
