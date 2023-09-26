@@ -3,34 +3,38 @@ import timeit
 
 def insertSort(arr):
         for i in range (1,len(arr)):
-                t=arr[i]
+                t=int(arr[i])
                 j=i-1
-                while(j>=0 and t<arr[j]):
+                while(j>=0 and t<int(arr[j])):
                         arr[j+1]=arr[j]
                         j=j-1
                 arr[j+1]=t
-try:
-        n= input("Введите количество элементов сортируемого массива: ")
-        if abs(int(n))>=1000000:
-                print('Слишком большое количество элементов')
-                exit()
-except Exception:
-        print("Некорректный ввод")
-        exit() 
 
-file=open('input.txt','w+')
-file.write(str(random.randint(0,100)))
-for i in range (1, int(n)-1):
-        file.write(' ')
-        file.write(str(random.randint(-1000,1000)))       
-file.close()
-file=open('input.txt','r')
-arr=list((file.read()).split())
-#print('Исходный массив:', str(arr))
-start = timeit.default_timer()
-insertSort(arr)
-end= timeit.default_timer()
-#print('Отсортированный массив: ', arr)
-sorted=open('sorted.txt','w+')
-sorted.write(str(arr))
-print("Время сортировки: ", end-start)
+def main():                
+        try:
+                n= input("Введите количество элементов сортируемого массива: ")
+                if abs(int(n))>=1000000:
+                        print('Слишком большое количество элементов')
+                        exit()
+        except Exception:
+                print("Некорректный ввод")
+                exit() 
+        file=open('input.txt','w+')
+        file.write(str(random.randint(-10,10)))
+        for i in range (1, int(n)-1):
+                file.write(' ')
+                file.write(str(random.randint(-10,10)))       
+        file.close()
+        file=open('input.txt','r')
+        arr=list((file.read()).split())
+        print('Исходный массив:', str(arr))
+        start = timeit.default_timer()
+        insertSort(arr)
+        end= timeit.default_timer()
+        print('Отсортированный массив: ', arr)
+        sorted=open('sorted.txt','w+')
+        sorted.write(str(arr))
+        print("Время сортировки: ", end-start)
+
+if __name__ == '__main__':
+    main()
