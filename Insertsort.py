@@ -12,7 +12,7 @@ def insertSort(arr):
 
 def main():  
         max=1000
-        min=1000
+        min=-1000
         nmax=100000              
         try:
                 n= input("Введите количество элементов сортируемого массива: ")
